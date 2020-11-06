@@ -1,9 +1,5 @@
 package br.com.fatecmc.prosiga.model.domain;
 
-/**
- *
- * @author paulo
- */
 public class EntidadeDominio {
     private int id;
 
