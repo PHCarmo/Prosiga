@@ -4,6 +4,7 @@ package br.com.fatecmc.prossiga.model.dao;
 import br.com.fatecmc.prossiga.model.domain.EntidadeDominio;
 import br.com.fatecmc.prossiga.model.domain.Professor;
 import br.com.fatecmc.prossiga.model.connection.ConnectionFactory;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
