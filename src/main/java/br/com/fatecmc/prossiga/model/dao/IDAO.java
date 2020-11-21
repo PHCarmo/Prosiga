@@ -1,6 +1,6 @@
-package com.mycompany.prossiga.model.dao;
+package br.com.fatecmc.prossiga.model.dao;
 
-import br.com.fatecmc.prosiga.model.domain.EntidadeDominio;
+import br.com.fatecmc.prossiga.model.domain.EntidadeDominio;
 import java.util.List;
 
 /**

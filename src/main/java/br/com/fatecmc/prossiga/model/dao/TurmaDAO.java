@@ -1,10 +1,10 @@
-package com.mycompany.prossiga.model.dao;
+package br.com.fatecmc.prossiga.model.dao;
 
 
-import br.com.fatecmc.prosiga.model.domain.Curso;
-import br.com.fatecmc.prosiga.model.domain.EntidadeDominio;
-import br.com.fatecmc.prosiga.model.domain.Turma;
-import com.mycompany.prossiga.model.connection.ConnectionFactory;
+import br.com.fatecmc.prossiga.model.domain.Curso;
+import br.com.fatecmc.prossiga.model.domain.EntidadeDominio;
+import br.com.fatecmc.prossiga.model.domain.Turma;
+import br.com.fatecmc.prossiga.model.connection.ConnectionFactory;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;

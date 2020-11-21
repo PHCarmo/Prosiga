@@ -1,4 +1,4 @@
-package br.com.fatecmc.prosiga.model.domain;
+package br.com.fatecmc.prossiga.model.domain;
 
 public class Curso extends EntidadeDominio {
     private String nome;

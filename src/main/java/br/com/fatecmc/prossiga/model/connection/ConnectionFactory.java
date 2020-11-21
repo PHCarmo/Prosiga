@@ -1,4 +1,4 @@
-package com.mycompany.prossiga.model.connection;
+package br.com.fatecmc.prossiga.model.connection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

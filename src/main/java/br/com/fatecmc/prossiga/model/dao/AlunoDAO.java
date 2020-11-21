@@ -1,29 +1,30 @@
-package com.mycompany.prossiga.model.dao;
+package br.com.fatecmc.prossiga.model.dao;
 
 
-import br.com.fatecmc.prosiga.model.domain.Curso;
-import br.com.fatecmc.prosiga.model.domain.EntidadeDominio;
-import com.mycompany.prossiga.model.connection.ConnectionFactory;
+import br.com.fatecmc.prossiga.model.domain.Aluno;
+import br.com.fatecmc.prossiga.model.domain.EntidadeDominio;
+import br.com.fatecmc.prossiga.model.domain.Turma;
+import br.com.fatecmc.prossiga.model.connection.ConnectionFactory;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CursoDAO implements IDAO {
+public class AlunoDAO implements IDAO {
     private Connection conn;
 
     @Override
     public boolean salvar(EntidadeDominio entidade) {
         this.conn = ConnectionFactory.getConnection();
-        String sql = "INSERT INTO cursos(nome, turno, descricao) VALUES(?, ?, ?)";
+        String sql = "INSERT INTO alunos(nome, ra, id_turma) VALUES(?, ?, ?)";
 
         PreparedStatement stmt = null;
         
-        if(entidade instanceof Curso){
+        if(entidade instanceof Aluno){
             try {
                 stmt = conn.prepareStatement(sql);
-                stmt.setString(1, ((Curso) entidade).getNome());
-                stmt.setString(2, ((Curso) entidade).getTurno());
-                stmt.setString(3, ((Curso) entidade).getDescricao());
+                stmt.setString(1, ((Aluno) entidade).getNome());
+                stmt.setString(2, ((Aluno) entidade).getRa());
+                stmt.setInt(3, ((Aluno) entidade).getTurma().getId());
 
                 stmt.execute();
                 return true;
@@ -39,16 +40,16 @@ public class CursoDAO implements IDAO {
     @Override
     public boolean alterar(EntidadeDominio entidade) {
         this.conn = ConnectionFactory.getConnection();
-        String sql = "UPDATE cursos SET nome=?, turno=?, descricao=? WHERE id_curso=?";
+        String sql = "UPDATE alunos SET nome=?, ra=?, id_turma=? WHERE id_aluno=?";
 
         PreparedStatement stmt = null;
         
-        if(entidade instanceof Curso){
+        if(entidade instanceof Aluno){
             try {
                 stmt = conn.prepareStatement(sql);
-                stmt.setString(1, ((Curso) entidade).getNome());
-                stmt.setString(2, ((Curso) entidade).getTurno());
-                stmt.setString(3, ((Curso) entidade).getDescricao());
+                stmt.setString(1, ((Aluno) entidade).getNome());
+                stmt.setString(2, ((Aluno) entidade).getRa());
+                stmt.setInt(3, ((Aluno) entidade).getTurma().getId());
                 stmt.setInt(4, entidade.getId());
 
                 if(stmt.executeUpdate() == 1){
@@ -66,7 +67,7 @@ public class CursoDAO implements IDAO {
     @Override
     public boolean excluir(int id) {
         this.conn = ConnectionFactory.getConnection();
-        String sql = "DELETE FROM cursos WHERE id_curso=?";
+        String sql = "DELETE FROM alunos WHERE id_aluno=?";
 
         PreparedStatement stmt = null;
 
@@ -85,29 +86,30 @@ public class CursoDAO implements IDAO {
         return false;
     }
     
-    @Override
     public List consultar() {
         this.conn = ConnectionFactory.getConnection();
-        String sql = "SELECT * FROM cursos";
+        String sql = "SELECT * FROM alunos";
         
         PreparedStatement stmt = null;
         ResultSet rs = null;
         
-        List<Curso> cursos = new ArrayList<>();
+        List<Aluno> alunos = new ArrayList<>();
         try {
             stmt = conn.prepareStatement(sql);
             rs = stmt.executeQuery();
             
-            Curso curso = new Curso();
+            Aluno aluno = new Aluno();
+            Turma turma = new Turma();
             while(rs.next()) {
-                curso.setId(rs.getInt("id_curso"));
-                curso.setNome(rs.getString("nome"));
-                curso.setTurno(rs.getString("turno"));
-                curso.setDescricao(rs.getString("descricao"));
-                cursos.add(curso);
+                turma.setId(rs.getInt("id_turma"));
+                aluno.setId(rs.getInt("id_aluno"));
+                aluno.setNome(rs.getString("nome"));
+                aluno.setRa(rs.getString("ra"));
+                aluno.setTurma(turma);
+                alunos.add(aluno);
             }
                 
-            return cursos;
+            return alunos;
         } catch (SQLException ex) {
             System.out.println("Não foi possível consultar os dados no banco de dados.\nErro: " + ex.getMessage());
         } finally {
@@ -119,28 +121,30 @@ public class CursoDAO implements IDAO {
     @Override
     public List consultar(int id) {
         this.conn = ConnectionFactory.getConnection();
-        String sql = "SELECT * FROM cursos WHERE id_curso=?";
+        String sql = "SELECT * FROM alunos WHERE id_aluno=?";
         
         PreparedStatement stmt = null;
         ResultSet rs = null;
         
-        List<Curso> cursos = new ArrayList<>();
+        List<Aluno> alunos = new ArrayList<>();
         try {
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, id);
             
             rs = stmt.executeQuery();
             
-            Curso curso = new Curso();
+            Aluno aluno = new Aluno();
+            Turma turma = new Turma();
             while(rs.next()) {
-                curso.setId(rs.getInt("id_curso"));
-                curso.setNome(rs.getString("nome"));
-                curso.setTurno(rs.getString("turno"));
-                curso.setDescricao(rs.getString("descricao"));
-                cursos.add(curso);
+                turma.setId(rs.getInt("id_turma"));
+                aluno.setId(rs.getInt("id_aluno"));
+                aluno.setNome(rs.getString("nome"));
+                aluno.setRa(rs.getString("ra"));
+                aluno.setTurma(turma);
+                alunos.add(aluno);
             }
                 
-            return cursos;
+            return alunos;
         } catch (SQLException ex) {
             System.out.println("Não foi possível consultar os dados no banco de dados.\nErro: " + ex.getMessage());
         } finally {

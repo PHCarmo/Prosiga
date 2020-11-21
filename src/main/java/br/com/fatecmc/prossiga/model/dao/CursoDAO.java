@@ -1,28 +1,29 @@
-package com.mycompany.prossiga.model.dao;
+package br.com.fatecmc.prossiga.model.dao;
 
 
-import br.com.fatecmc.prosiga.model.domain.EntidadeDominio;
-import br.com.fatecmc.prosiga.model.domain.Professor;
-import com.mycompany.prossiga.model.connection.ConnectionFactory;
+import br.com.fatecmc.prossiga.model.domain.Curso;
+import br.com.fatecmc.prossiga.model.domain.EntidadeDominio;
+import br.com.fatecmc.prossiga.model.connection.ConnectionFactory;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProfessorDAO implements IDAO {
+public class CursoDAO implements IDAO {
     private Connection conn;
 
     @Override
     public boolean salvar(EntidadeDominio entidade) {
         this.conn = ConnectionFactory.getConnection();
-        String sql = "INSERT INTO professores(nome, titulacao) VALUES(?, ?)";
+        String sql = "INSERT INTO cursos(nome, turno, descricao) VALUES(?, ?, ?)";
 
         PreparedStatement stmt = null;
         
-        if(entidade instanceof Professor){
+        if(entidade instanceof Curso){
             try {
                 stmt = conn.prepareStatement(sql);
-                stmt.setString(1, ((Professor) entidade).getNome());
-                stmt.setString(2, ((Professor) entidade).getTitulacao());
+                stmt.setString(1, ((Curso) entidade).getNome());
+                stmt.setString(2, ((Curso) entidade).getTurno());
+                stmt.setString(3, ((Curso) entidade).getDescricao());
 
                 stmt.execute();
                 return true;
@@ -38,16 +39,17 @@ public class ProfessorDAO implements IDAO {
     @Override
     public boolean alterar(EntidadeDominio entidade) {
         this.conn = ConnectionFactory.getConnection();
-        String sql = "UPDATE professores SET nome=?, titulacao=? WHERE id_professor=?";
+        String sql = "UPDATE cursos SET nome=?, turno=?, descricao=? WHERE id_curso=?";
 
         PreparedStatement stmt = null;
         
-        if(entidade instanceof Professor){
+        if(entidade instanceof Curso){
             try {
                 stmt = conn.prepareStatement(sql);
-                stmt.setString(1, ((Professor) entidade).getNome());
-                stmt.setString(2, ((Professor) entidade).getTitulacao());
-                stmt.setInt(3, entidade.getId());
+                stmt.setString(1, ((Curso) entidade).getNome());
+                stmt.setString(2, ((Curso) entidade).getTurno());
+                stmt.setString(3, ((Curso) entidade).getDescricao());
+                stmt.setInt(4, entidade.getId());
 
                 if(stmt.executeUpdate() == 1){
                     return true;
@@ -64,7 +66,7 @@ public class ProfessorDAO implements IDAO {
     @Override
     public boolean excluir(int id) {
         this.conn = ConnectionFactory.getConnection();
-        String sql = "DELETE FROM professores WHERE id_professor=?";
+        String sql = "DELETE FROM cursos WHERE id_curso=?";
 
         PreparedStatement stmt = null;
 
@@ -86,25 +88,26 @@ public class ProfessorDAO implements IDAO {
     @Override
     public List consultar() {
         this.conn = ConnectionFactory.getConnection();
-        String sql = "SELECT * FROM professores";
+        String sql = "SELECT * FROM cursos";
         
         PreparedStatement stmt = null;
         ResultSet rs = null;
         
-        List<Professor> professores = new ArrayList<>();
+        List<Curso> cursos = new ArrayList<>();
         try {
             stmt = conn.prepareStatement(sql);
             rs = stmt.executeQuery();
             
-            Professor professor = new Professor();
+            Curso curso = new Curso();
             while(rs.next()) {
-                professor.setId(rs.getInt("id_professor"));
-                professor.setNome(rs.getString("nome"));
-                professor.setTitulacao(rs.getString("titulacao"));
-                professores.add(professor);
+                curso.setId(rs.getInt("id_curso"));
+                curso.setNome(rs.getString("nome"));
+                curso.setTurno(rs.getString("turno"));
+                curso.setDescricao(rs.getString("descricao"));
+                cursos.add(curso);
             }
                 
-            return professores;
+            return cursos;
         } catch (SQLException ex) {
             System.out.println("Não foi possível consultar os dados no banco de dados.\nErro: " + ex.getMessage());
         } finally {
@@ -116,25 +119,28 @@ public class ProfessorDAO implements IDAO {
     @Override
     public List consultar(int id) {
         this.conn = ConnectionFactory.getConnection();
-        String sql = "SELECT * FROM professores WHERE id_professor=?";
+        String sql = "SELECT * FROM cursos WHERE id_curso=?";
         
         PreparedStatement stmt = null;
         ResultSet rs = null;
         
-        List<Professor> professores = new ArrayList<>();
+        List<Curso> cursos = new ArrayList<>();
         try {
             stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, id);
+            
             rs = stmt.executeQuery();
             
-            Professor professor = new Professor();
+            Curso curso = new Curso();
             while(rs.next()) {
-                professor.setId(rs.getInt("id_professor"));
-                professor.setNome(rs.getString("nome"));
-                professor.setTitulacao(rs.getString("titulacao"));
-                professores.add(professor);
+                curso.setId(rs.getInt("id_curso"));
+                curso.setNome(rs.getString("nome"));
+                curso.setTurno(rs.getString("turno"));
+                curso.setDescricao(rs.getString("descricao"));
+                cursos.add(curso);
             }
                 
-            return professores;
+            return cursos;
         } catch (SQLException ex) {
             System.out.println("Não foi possível consultar os dados no banco de dados.\nErro: " + ex.getMessage());
         } finally {
