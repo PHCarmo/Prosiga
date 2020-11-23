@@ -1,0 +1,13 @@
+br/com/fatecmc/prossiga/model/dao/DisciplinaDAO.class
+br/com/fatecmc/prossiga/model/domain/Professor.class
+br/com/fatecmc/prossiga/model/dao/CursoDAO.class
+br/com/fatecmc/prossiga/model/dao/TurmaDAO.class
+br/com/fatecmc/prossiga/model/domain/EntidadeDominio.class
+br/com/fatecmc/prossiga/model/connection/ConnectionFactory.class
+br/com/fatecmc/prossiga/model/domain/Curso.class
+br/com/fatecmc/prossiga/model/dao/AlunoDAO.class
+br/com/fatecmc/prossiga/model/dao/ProfessorDAO.class
+br/com/fatecmc/prossiga/model/domain/Disciplina.class
+br/com/fatecmc/prossiga/model/domain/Turma.class
+br/com/fatecmc/prossiga/model/dao/IDAO.class
+br/com/fatecmc/prossiga/model/domain/Aluno.class

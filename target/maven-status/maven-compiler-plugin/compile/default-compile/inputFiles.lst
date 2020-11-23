@@ -1,0 +1,13 @@
+/home/luccas/Documentos/Códigos/Eletiva WEB/Prosiga/src/main/java/br/com/fatecmc/prossiga/model/domain/Curso.java
+/home/luccas/Documentos/Códigos/Eletiva WEB/Prosiga/src/main/java/br/com/fatecmc/prossiga/model/dao/AlunoDAO.java
+/home/luccas/Documentos/Códigos/Eletiva WEB/Prosiga/src/main/java/br/com/fatecmc/prossiga/model/dao/ProfessorDAO.java
+/home/luccas/Documentos/Códigos/Eletiva WEB/Prosiga/src/main/java/br/com/fatecmc/prossiga/model/dao/IDAO.java
+/home/luccas/Documentos/Códigos/Eletiva WEB/Prosiga/src/main/java/br/com/fatecmc/prossiga/model/domain/Professor.java
+/home/luccas/Documentos/Códigos/Eletiva WEB/Prosiga/src/main/java/br/com/fatecmc/prossiga/model/domain/EntidadeDominio.java
+/home/luccas/Documentos/Códigos/Eletiva WEB/Prosiga/src/main/java/br/com/fatecmc/prossiga/model/domain/Aluno.java
+/home/luccas/Documentos/Códigos/Eletiva WEB/Prosiga/src/main/java/br/com/fatecmc/prossiga/model/domain/Disciplina.java
+/home/luccas/Documentos/Códigos/Eletiva WEB/Prosiga/src/main/java/br/com/fatecmc/prossiga/model/dao/TurmaDAO.java
+/home/luccas/Documentos/Códigos/Eletiva WEB/Prosiga/src/main/java/br/com/fatecmc/prossiga/model/connection/ConnectionFactory.java
+/home/luccas/Documentos/Códigos/Eletiva WEB/Prosiga/src/main/java/br/com/fatecmc/prossiga/model/dao/DisciplinaDAO.java
+/home/luccas/Documentos/Códigos/Eletiva WEB/Prosiga/src/main/java/br/com/fatecmc/prossiga/model/dao/CursoDAO.java
+/home/luccas/Documentos/Códigos/Eletiva WEB/Prosiga/src/main/java/br/com/fatecmc/prossiga/model/domain/Turma.java
