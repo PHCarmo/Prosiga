@@ -86,7 +86,7 @@ public class CursoDAO implements IDAO {
     }
     
     @Override
-    public List consultar() {
+    public List<Curso> consultar() {
         this.conn = ConnectionFactory.getConnection();
         String sql = "SELECT * FROM cursos";
         
@@ -117,7 +117,7 @@ public class CursoDAO implements IDAO {
     }
     
     @Override
-    public List consultar(int id) {
+    public List<Curso> consultar(int id) {
         this.conn = ConnectionFactory.getConnection();
         String sql = "SELECT * FROM cursos WHERE id_curso=?";
         

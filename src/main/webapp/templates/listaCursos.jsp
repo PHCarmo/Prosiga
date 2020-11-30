@@ -48,12 +48,12 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="curso" items="${cursos}">
+				<c:forEach items="${cursos}" var="cursoDAO" >
 					<tr>
-						<td><c:out value="${curso.id_curso}"></c:out></td>
-						<td><c:out value="${curso.nome}" /></td>
-						<td><c:out value="${curso.turno}" /></td>
-						<td><c:out value="${curso.descricao}" /></td>
+						<td><c:out value="${cursoDAO.id_curso}"></c:out></td>
+						<td><c:out value="${cursoDAO.nome}"></c:out></td>
+						<td><c:out value="${cursoDAO.turno}"></c:out></td>
+						<td><c:out value="${cursoDAO.descricao}"></c:out></td>
 						<td><a href="">Editar</a></td>
 						<td><a href="">Deletar</a></td>
 					</tr>
@@ -61,8 +61,7 @@
 			</tbody>
 		</table>
 		<h:panelGrid columns="2">
-			<button type="button" class="btn btn-outline-dark"
-				onclick="location.href='FormCursos.xhtml';">Cadastrar</button>
+			<button type="button" class="btn btn-outline-dark" onclick="location.href='FormCursos.xhtml';">Cadastrar</button>
 			<button type="button" class="btn btn-outline-dark">Pesquisar</button>
 		</h:panelGrid>
 	</div>

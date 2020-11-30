@@ -47,16 +47,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <c:forEach var="var" items="${variavel}">
-                        <tr>
-                            <td><h:outputText value="" /></td>
-                            <td><h:outputText value="" /></td>
-                            <td><h:outputText value="" /></td>
-                            <td><h:outputText value="" /></td>
-                            <td><a href="">Editar</a></td>
-                            <td><a href="">Deletar</a></td>
-                        </tr>
-                    </c:forEach>
+                   <c:forEach var="curso" items="${cursos}">
+					<tr>
+						<td><c:out value="${curso.id_curso}"></c:out></td>
+						<td><c:out value="${curso.nome}" /></td>
+						<td><c:out value="${curso.turno}" /></td>
+						<td><c:out value="${curso.descricao}" /></td>
+						<td><a href="">Editar</a></td>
+						<td><a href="">Deletar</a></td>
+					</tr>
+				</c:forEach>
                 </tbody>
             </table>
             <h:panelGrid columns="2">

@@ -1,7 +1,6 @@
 package br.com.fatecmc.prossiga.model.controle;
 
 import java.io.IOException;
-import java.net.URISyntaxException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -36,8 +35,7 @@ public class ControleCurso extends HttpServlet {
 
 		CursoDAO cursoDAO = new CursoDAO();
 		request.setAttribute("cursos", cursoDAO.consultar());
-		getServletContext().getRequestDispatcher("/src/main/webapp/templates/listaCursos.jsp").forward(request, response);
-
+		
 	}
 
 	/**
@@ -55,6 +53,7 @@ public class ControleCurso extends HttpServlet {
 		CursoDAO cursoDAO = new CursoDAO();
 		cursoDAO.salvar(curso);
 		response.sendRedirect("/eletivaWeb/templates/listaCursos.jsp");
+		
 
 	}
 
