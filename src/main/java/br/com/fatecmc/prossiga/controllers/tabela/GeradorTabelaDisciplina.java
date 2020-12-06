@@ -11,39 +11,54 @@ public class GeradorTabelaDisciplina implements IGeradorJson {
 	public String gerar(List<EntidadeDominio> entidades) {
 		
 		String json = "";
-		
+		String data = "";
 		if(!(entidades.isEmpty())) {
-			json = "{"
-					+ "  \"draw\": 1,"
-					+ "  \"recordsTotal\": "+ entidades.size() +","
-					+ "  \"recordsFiltered\": "+ entidades.size() +","
-					+ "  \"data\": [";
-			
-			for(EntidadeDominio e: entidades) {
-				Disciplina d = (Disciplina) e;
-				if(entidades.indexOf(e) == (entidades.size() -1)) {
-					json += "["
-							+"\""+ d.getId() + "\","
-							+"\""+ d.getCarga_horaria() + "\","
-							+"\""+ d.getEmenta() + "\","
-							+"\""+ d.getCurso().getNome() + "\","
-							+"\""+ d.getProfessor().getNome() + "\""
-							+ "]";
-				}else {
-					json += "["
-							+"\""+ d.getId() + "\","
-							+"\""+ d.getCarga_horaria() + "\","
-							+"\""+ d.getEmenta() + "\","
-							+"\""+ d.getCurso().getNome() + "\","
-							+"\""+ d.getProfessor().getNome() + "\""
-							+ "],";
-				}
-			}
-			
-			json += "]}";
-		}	
+                    int totalLista = entidades.size();
+                    int cont = 1;
+                    for(EntidadeDominio e: entidades) {
+                        Disciplina  c = (Disciplina) e;
+                        data += " ["
+                        		+"\""+ c.getId() + "\","
+                                +"\""+ c.getNome() + "\","
+                                +"\""+ c.getCarga_horaria() + "\","
+                                +"\""+ c.getEmenta()+ "\","
+                                +"\""+ c.getCurso().getId()+ "\","
+                                +"\""+ c.getProfessor().getId()+ "\","
+								+"\"<a href='/eletivaWeb/faces/formDscp.jsp?nome="
+								+c.getNome()
+								+"&ch="
+								+c.getCarga_horaria()
+								+"&ementa="
+								+c.getEmenta()
+								+"&curso="
+								+c.getCurso().getId()
+								+"&professor="
+								+c.getProfessor().getId()
+								+"&id="
+								+c.getId()
+								+"'>Atualizar</a>\","
+								+"\"<a href='/eletivaWeb/ControleDscp?action=delete"
+								+"&id="
+								+c.getId()
+								+"'>Deletar</a>\""
+								+"]";
+                        
+                        if(cont < totalLista){
+                            data += ",";
+                        }
+                        cont++;
+                    }
+                    json = "{"
+                                    + "  \"draw\": 1,"
+                                    + "  \"recordsTotal\": "+ entidades.size() +","
+                                    + "  \"recordsFiltered\": "+ entidades.size() +","
+                                    + "  \"data\": ["+
+                                    data +
+                                    "]"+
+                                    "}";
+		}
 		return json;
-		
 	}
+
 
 }

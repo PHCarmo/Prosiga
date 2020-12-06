@@ -63,6 +63,32 @@ public class CursoDAO implements IDAO {
         }
         return false;
     }
+    
+    public boolean alterar(EntidadeDominio entidade, int id) {
+        this.conn = ConnectionFactory.getConnection();
+        String sql = "UPDATE cursos SET nome=?, turno=?, descricao=? WHERE id_curso=?";
+
+        PreparedStatement stmt = null;
+        
+        if(entidade instanceof Curso){
+            try {
+                stmt = conn.prepareStatement(sql);
+                stmt.setString(1, ((Curso) entidade).getNome());
+                stmt.setString(2, ((Curso) entidade).getTurno());
+                stmt.setString(3, ((Curso) entidade).getDescricao());
+                stmt.setInt(4, id);
+
+                if(stmt.executeUpdate() == 1){
+                    return true;
+                }
+            } catch (SQLException ex) {
+                System.out.println("Não foi possível alterar os dados no banco de dados.\nErro: " + ex.getMessage());
+            } finally {
+                ConnectionFactory.closeConnection(conn, stmt);
+            }
+        }
+        return false;
+    }
 
     @Override
     public boolean excluir(int id) {
@@ -99,8 +125,8 @@ public class CursoDAO implements IDAO {
             stmt = conn.prepareStatement(sql);
             rs = stmt.executeQuery();
             
-            Curso curso = new Curso();
             while(rs.next()) {
+            	Curso curso = new Curso();
                 curso.setId(rs.getInt("id_curso"));
                 curso.setNome(rs.getString("nome"));
                 curso.setTurno(rs.getString("turno"));

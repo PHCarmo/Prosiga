@@ -10,35 +10,46 @@ public class GeradorTabelaAluno implements IGeradorJson {
 	public String gerar(List<EntidadeDominio> entidades) {
 		
 		String json = "";
-		
+		String data = "";
 		if(!(entidades.isEmpty())) {
-			json = "{"
-					+ "  \"draw\": 1,"
-					+ "  \"recordsTotal\": "+ entidades.size() +","
-					+ "  \"recordsFiltered\": "+ entidades.size() +","
-					+ "  \"data\": [";
-			
-			for(EntidadeDominio e: entidades) {
-				Aluno a = (Aluno) e;
-				if(entidades.indexOf(e) == (entidades.size() -1)) {
-					json += "["
-							+"\""+ a.getId() + "\","
-							+"\""+ a.getNome() + "\","
-							+"\""+ a.getRa() + "\","
-							+"\""+ a.getTurma().getDescricao() + "\""
-							+ "]";
-				}else {
-					json += "["
-							+"\""+ a.getId() + "\","
-							+"\""+ a.getNome() + "\","
-							+"\""+ a.getRa() + "\","
-							+"\""+ a.getTurma().getDescricao() + "\""
-							+ "],";
-				}
-			}
-			
-			json += "]}";
-		}	
+                    int totalLista = entidades.size();
+                    int cont = 1;
+                    for(EntidadeDominio e: entidades) {
+                        Aluno  c = (Aluno) e;
+                        data += " ["
+                        		+"\""+ c.getId() + "\","
+                                +"\""+ c.getNome() + "\","
+                                +"\""+ c.getRa() + "\","
+                                +"\""+ c.getTurma().getId() + "\","
+								+"\"<a href='/eletivaWeb/faces/formAluno.jsp?nome="
+								+c.getNome()
+								+"&ra="
+								+c.getRa()
+								+"&turma="
+								+c.getTurma().getId()
+								+"&id="
+								+c.getId()
+								+"'>Atualizar</a>\","
+								+"\"<a href='/eletivaWeb/ControleAluno?action=delete"
+								+"&id="
+								+c.getId()
+								+"'>Deletar</a>\""
+								+"]";
+                        
+                        if(cont < totalLista){
+                            data += ",";
+                        }
+                        cont++;
+                    }
+                    json = "{"
+                                    + "  \"draw\": 1,"
+                                    + "  \"recordsTotal\": "+ entidades.size() +","
+                                    + "  \"recordsFiltered\": "+ entidades.size() +","
+                                    + "  \"data\": ["+
+                                    data +
+                                    "]"+
+                                    "}";
+		}
 		return json;
 	}
 

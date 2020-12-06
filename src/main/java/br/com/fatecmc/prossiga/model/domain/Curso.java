@@ -1,7 +1,8 @@
 package br.com.fatecmc.prossiga.model.domain;
 
 public class Curso extends EntidadeDominio {
-    private String nome;
+    private int id;
+	private String nome;
     private String turno;
     private String descricao;
 
@@ -23,6 +24,10 @@ public class Curso extends EntidadeDominio {
         this.nome = nome;
         this.turno = turno;
         this.descricao = descricao;
+    }
+    
+    public Curso(int id) {
+    	this.id = id;
     }
 
     public String getDescricao() {

@@ -1,6 +1,8 @@
 package br.com.fatecmc.prossiga.controllers;
 
 import java.io.IOException;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -67,6 +69,7 @@ public class DadosTabelaController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
+		
 	}
 	
 }

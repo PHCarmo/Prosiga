@@ -66,6 +66,34 @@ public class DisciplinaDAO implements IDAO {
         }
         return false;
     }
+    
+    public boolean alterar(EntidadeDominio entidade, int id) {
+        this.conn = ConnectionFactory.getConnection();
+        String sql = "UPDATE disciplinas SET nome=?, carga_horaria=?, ementa=?, id_curso=?, id_professor=? WHERE id_disciplina=?";
+
+        PreparedStatement stmt = null;
+        
+        if(entidade instanceof Disciplina){
+            try {
+                stmt = conn.prepareStatement(sql);
+                stmt.setString(1, ((Disciplina) entidade).getNome());
+                stmt.setInt(2, ((Disciplina) entidade).getCarga_horaria());
+                stmt.setString(3, ((Disciplina) entidade).getEmenta());
+                stmt.setInt(4, ((Disciplina) entidade).getCurso().getId());
+                stmt.setInt(5, ((Disciplina) entidade).getProfessor().getId());
+                stmt.setInt(6, id);
+
+                if(stmt.executeUpdate() == 1){
+                    return true;
+                }
+            } catch (SQLException ex) {
+                System.out.println("Não foi possível alterar os dados no banco de dados.\nErro: " + ex.getMessage());
+            } finally {
+                ConnectionFactory.closeConnection(conn, stmt);
+            }
+        }
+        return false;
+    }
 
     @Override
     public boolean excluir(int id) {
@@ -102,10 +130,11 @@ public class DisciplinaDAO implements IDAO {
             stmt = conn.prepareStatement(sql);
             rs = stmt.executeQuery();
             
-            Disciplina disciplina = new Disciplina();
-            Curso curso = new Curso();
-            Professor professor = new Professor();
+           
             while(rs.next()) {
+            	 Disciplina disciplina = new Disciplina();
+                 Curso curso = new Curso();
+                 Professor professor = new Professor();
                 curso.setId(rs.getInt("id_curso"));
                 professor.setId(rs.getInt("id_professor"));
                 disciplina.setId(rs.getInt("id_disciplina"));

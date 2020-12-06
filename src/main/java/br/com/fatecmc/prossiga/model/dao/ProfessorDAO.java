@@ -61,6 +61,31 @@ public class ProfessorDAO implements IDAO {
         }
         return false;
     }
+    
+    public boolean alterar(EntidadeDominio entidade, int id) {
+        this.conn = ConnectionFactory.getConnection();
+        String sql = "UPDATE professores SET nome=?, titulacao=? WHERE id_professor=?";
+
+        PreparedStatement stmt = null;
+        
+        if(entidade instanceof Professor){
+            try {
+                stmt = conn.prepareStatement(sql);
+                stmt.setString(1, ((Professor) entidade).getNome());
+                stmt.setString(2, ((Professor) entidade).getTitulacao());
+                stmt.setInt(3, id);
+
+                if(stmt.executeUpdate() == 1){
+                    return true;
+                }
+            } catch (SQLException ex) {
+                System.out.println("Não foi possível alterar os dados no banco de dados.\nErro: " + ex.getMessage());
+            } finally {
+                ConnectionFactory.closeConnection(conn, stmt);
+            }
+        }
+        return false;
+    }
 
     @Override
     public boolean excluir(int id) {
@@ -97,8 +122,8 @@ public class ProfessorDAO implements IDAO {
             stmt = conn.prepareStatement(sql);
             rs = stmt.executeQuery();
             
-            Professor professor = new Professor();
-            while(rs.next()) {
+            while (rs.next()) {
+                Professor professor = new Professor();
                 professor.setId(rs.getInt("id_professor"));
                 professor.setNome(rs.getString("nome"));
                 professor.setTitulacao(rs.getString("titulacao"));

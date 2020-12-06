@@ -21,7 +21,8 @@ public class Turma extends EntidadeDominio {
         this.curso = curso;
     }
 
-    public Curso getCurso() {
+
+	public Curso getCurso() {
         return curso;
     }
 

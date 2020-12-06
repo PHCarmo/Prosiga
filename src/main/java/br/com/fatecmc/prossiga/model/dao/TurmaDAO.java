@@ -25,7 +25,6 @@ public class TurmaDAO implements IDAO {
                 stmt = conn.prepareStatement(sql);
                 stmt.setString(1, ((Turma) entidade).getDescricao());
                 stmt.setInt(2, ((Turma) entidade).getCurso().getId());
-
                 stmt.execute();
                 return true;
             } catch (SQLException ex) {
@@ -50,6 +49,31 @@ public class TurmaDAO implements IDAO {
                 stmt.setString(1, ((Turma) entidade).getDescricao());
                 stmt.setInt(2, ((Turma) entidade).getCurso().getId());
                 stmt.setInt(3, entidade.getId());
+
+                if(stmt.executeUpdate() == 1){
+                    return true;
+                }
+            } catch (SQLException ex) {
+                System.out.println("Não foi possível alterar os dados no banco de dados.\nErro: " + ex.getMessage());
+            } finally {
+                ConnectionFactory.closeConnection(conn, stmt);
+            }
+        }
+        return false;
+    }
+    
+    public boolean alterar(EntidadeDominio entidade, int id) {
+        this.conn = ConnectionFactory.getConnection();
+        String sql = "UPDATE turmas SET descricao=?, id_curso=? WHERE id_turma=?";
+
+        PreparedStatement stmt = null;
+        
+        if(entidade instanceof Turma){
+            try {
+                stmt = conn.prepareStatement(sql);
+                stmt.setString(1, ((Turma) entidade).getDescricao());
+                stmt.setInt(2, ((Turma) entidade).getCurso().getId());
+                stmt.setInt(3, id);
 
                 if(stmt.executeUpdate() == 1){
                     return true;
@@ -98,11 +122,13 @@ public class TurmaDAO implements IDAO {
             stmt = conn.prepareStatement(sql);
             rs = stmt.executeQuery();
             
-            Turma turma = new Turma();
-            Curso curso = new Curso();
+           
             while(rs.next()) {
+            	Turma turma = new Turma();
+                Curso curso = new Curso();
                 curso.setId(rs.getInt("id_curso"));
                 turma.setId(rs.getInt("id_turma"));
+                turma.setCurso(curso);
                 turma.setDescricao(rs.getString("descricao"));
                 turmas.add(turma);
             }
