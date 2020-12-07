@@ -6,6 +6,7 @@
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
     <link href="css/mystyle.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" />
+    <title>Prossiga - Professor</title>
 </head>
 <%
 String id = request.getParameter("id"); // aqui recebe o valor passado e manda para o select 
