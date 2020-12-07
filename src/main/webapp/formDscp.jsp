@@ -3,7 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>:::: CADASTRO DE FUNCIONARIO::::</title>
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link href="css/mystyle.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" />
 </head>
 <%
 String id = request.getParameter("id"); // aqui recebe o valor passado e manda para o select 
@@ -49,7 +51,7 @@ professor=(professor!=null)?professor : "";
 		
 		<h3>Favor inserir id de um curso e de um professor cadastrados.</h3>
 		
-		<input type="submit" value="SALVAR"/>
+		<input type="submit" value="Salvar"/>
 	
 	</form>
 </body>
