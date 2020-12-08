@@ -19,6 +19,25 @@ titulacao=(titulacao!=null)?titulacao : "";
 %>
 
 <body>
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active"><a class="nav-item nav-link active"
+                        href="..">Home<span class="sr-only">(current)</span></a></li>
+                <li class="nav-item active"><a class="nav-link btn-dark"
+                        href="listaAlunos.xhtml">Alunos<span class="sr-only">(current)</span></a></li>
+                <li class="nav-item active"><a class="nav-link btn-dark"
+                        href="listaDscp.xhtml">Disciplinas<span class="sr-only">(current)</span></a></li>
+                <li class="nav-item active"><a class="nav-link btn-dark"
+                        href="listaTurma.xhtml">Turmas<span class="sr-only">(current)</span></a></li>
+                <li class="nav-item active"><a class="nav-link btn-dark"
+                        href="listaCursos.xhtml">Cursos<span class="sr-only">(current)</span></a></li>
+            </ul>
+        </div>
+        </nav>
+    </div>
+    <div class="container centro ">
 	<form action="ControleProfessor" method="POST">		
 		<label for="idProfessor">Id:</label>
 		<input type="text" id="idProfessor" name="idProfessor" readonly="readonly" value="<%=id%>" readonly />
@@ -35,5 +54,6 @@ titulacao=(titulacao!=null)?titulacao : "";
 		<input type="submit" value="Salvar"/>
 	
 	</form>
+    </div>
 </body>
 </html>

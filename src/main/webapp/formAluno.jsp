@@ -21,27 +21,52 @@ turma=(turma!=null)?turma : "";
 %>
 
 <body>
-	<form action="ControleAluno" method="POST">		
-		<label for="idAluno">Id:</label>
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-item nav-link active" href="..">Home<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link btn-dark" href="listaProf.xhtml">Professores<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link btn-dark" href="listaDscp.xhtml">Disciplinas<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link btn-dark" href="listaTurma.xhtml">Turmas<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link btn-dark" href="listaCursos.xhtml">Cursos<span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div class="container centro ">
+        <form action="ControleAluno" method="POST">		
+            <label for="idAluno">Id:</label>
             <input type="text" id="idAluno" name="idAluno" readonly="readonly" value="<%=id%>" readonly />
-		<br />
-		
-		<label for="txtAluno">Nome:</label>
-		<input type="text" id="txtAluno" name="txtAluno" value="<%=nome%>" />
-		<br />
-		
-		<label for="txtRA">RA:</label>
-		<input type="text" id="txtRA" name="txtRA" value="<%=ra%>" />
-		<br />	
-		
-		<label for="idTurma">Turma:</label>
-		<input type="text" id="idTurma" name="idTurma" value="<%=turma%>" />
-		<br/>
-		
-		<h3>Favor inserir id de uma turma cadastrada.</h3>
-		
+            <br />
+            
+            <label for="txtAluno">Nome:</label>
+            <input type="text" id="txtAluno" name="txtAluno" value="<%=nome%>" />
+            <br />
+            
+            <label for="txtRA">RA:</label>
+            <input type="text" id="txtRA" name="txtRA" value="<%=ra%>" />
+            <br />	
+            
+            <label for="idTurma">Turma:</label>
+            <input type="text" id="idTurma" name="idTurma" value="<%=turma%>" />
+            <br/>
+            
+            <h3>Favor inserir id de uma turma cadastrada.</h3>
+            
             <input type="submit" value="Salvar"/>
-	
-	</form>
+        
+        </form>
+    </div>
 </body>
 </html>

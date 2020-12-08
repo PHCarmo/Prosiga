@@ -18,6 +18,30 @@ descricao=(descricao!=null)?descricao : "";
 %>
 
 <body>
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-item nav-link active" href="..">Home<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link btn-dark" href="listaProf.xhtml">Professores<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link btn-dark" href="listaAlunos.xhtml">Alunos<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link btn-dark" href="listaDscp.xhtml">Disciplinas<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link btn-dark" href="listaCursos.xhtml">Cursos<span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div class="container centro ">
 	<form action="ControleTurma" method="POST">		
 		<label for="idTurma">Id Turma:</label>
 		<input type="text" id="idTurma" name="idTurma" readonly="readonly" value="<%=id%>" readonly />
@@ -35,5 +59,6 @@ descricao=(descricao!=null)?descricao : "";
 		<input type="submit" value="Salvar"/>
 	
 	</form>
+    </div>
 </body>
 </html>

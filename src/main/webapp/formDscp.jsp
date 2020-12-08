@@ -25,6 +25,30 @@ professor=(professor!=null)?professor : "";
 %>
 
 <body>
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-item nav-link active" href="..">Home<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link btn-dark" href="listaProf.xhtml">Professores<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link btn-dark" href="listaAlunos.xhtml">Alunos<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link btn-dark" href="listaCursos.xhtml">Cursos<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link btn-dark" href="listaTurma.xhtml">Turmas<span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div class="container centro ">
 	<form action="ControleDscp" method="POST">		
 		<label for="idDscp">Id:</label>
 		<input type="text" id="idDscp" name="idDscp" readonly="readonly" value="<%=id%>" readonly />
@@ -55,5 +79,6 @@ professor=(professor!=null)?professor : "";
 		<input type="submit" value="Salvar"/>
 	
 	</form>
+    </div>
 </body>
 </html>
