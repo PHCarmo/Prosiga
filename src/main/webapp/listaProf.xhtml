@@ -52,18 +52,13 @@
 		</h:panelGrid>
 	</div>
 	<script type="text/javascript">
-		$(document)
-				.ready(
-						function() {
-							var table = $('#minhatable')
-									.DataTable(
-											{
-												"language" : {
+            $(document).ready(function () {
+                $('#minhatable').DataTable({
+	            		"language": {
 													"url" : "//cdn.datatables.net/plug-ins/1.10.21/i18n/Portuguese-Brasil.json"
 												},
-												"processing" : true,
-												"serverSide" : true,
-												"ajax" : "dadosTabelaController?tabela=professor"
+                       	"processing": true,
+                        "ajax": "dadosTabelaController?tabela=professor"
 											});
 						});
 	</script>
