@@ -27,7 +27,7 @@ professor=(professor!=null)?professor : "";
 <body>
 	<form action="ControleDscp" method="POST">		
 		<label for="idDscp">Id:</label>
-		<input type="text" id="idDscp" name="idDscp" readonly="readonly" value="<%=id%>"/>
+		<input type="text" id="idDscp" name="idDscp" readonly="readonly" value="<%=id%>" readonly />
 		<br />
 		
 		<label for="txtDscp">Nome:</label>

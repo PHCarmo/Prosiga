@@ -21,7 +21,7 @@ titulacao=(titulacao!=null)?titulacao : "";
 <body>
 	<form action="ControleProfessor" method="POST">		
 		<label for="idProfessor">Id:</label>
-		<input type="text" id="idProfessor" name="idProfessor" readonly="readonly" value="<%=id%>"/>
+		<input type="text" id="idProfessor" name="idProfessor" readonly="readonly" value="<%=id%>" readonly />
 		<br />
 		
 		<label for="txtProfessor">Nome:</label>

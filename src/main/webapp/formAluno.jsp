@@ -23,7 +23,7 @@ turma=(turma!=null)?turma : "";
 <body>
 	<form action="ControleAluno" method="POST">		
 		<label for="idAluno">Id:</label>
-		<input type="text" id="idAluno" name="idAluno" readonly="readonly" value="<%=id%>"/>
+            <input type="text" id="idAluno" name="idAluno" readonly="readonly" value="<%=id%>" readonly />
 		<br />
 		
 		<label for="txtAluno">Nome:</label>

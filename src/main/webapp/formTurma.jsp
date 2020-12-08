@@ -20,7 +20,7 @@ descricao=(descricao!=null)?descricao : "";
 <body>
 	<form action="ControleTurma" method="POST">		
 		<label for="idTurma">Id Turma:</label>
-		<input type="text" id="idTurma" name="idTurma" readonly="readonly" value="<%=id%>"/>
+		<input type="text" id="idTurma" name="idTurma" readonly="readonly" value="<%=id%>" readonly />
 		<br />
 		
 		<label for="txtDescricao">Descricao:</label>
