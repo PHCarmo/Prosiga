@@ -40,18 +40,18 @@ titulacao=(titulacao!=null)?titulacao : "";
     <div class="container centro ">
 	<form action="ControleProfessor" method="POST">		
 		<label for="idProfessor">Id:</label>
-		<input type="text" id="idProfessor" name="idProfessor" readonly="readonly" value="<%=id%>" readonly />
+		<input type="number" id="idProfessor" name="idProfessor" value="<%=id%>" readonly />
 		<br />
 		
 		<label for="txtProfessor">Nome:</label>
-		<input type="text" id="txtProfessor" name="txtProfessor" value="<%=nome%>" />
+		<input type="text" id="txtProfessor" name="txtProfessor" maxlength="60" value="<%=nome%>" />
 		<br />
 		
 		<label for="txtTitulacao">Titulacao:</label>
-		<input type="text" id="txtTitulacao" name="txtTitulacao" value="<%=titulacao%>" />
+		<input type="text" id="txtTitulacao" name="txtTitulacao" maxlength="20" value="<%=titulacao%>" />
 		<br />	
 		
-		<input type="submit" value="Salvar"/>
+		<input type="submit" class="btn btn-outline-dark" value="Salvar"/>
 	
 	</form>
     </div>

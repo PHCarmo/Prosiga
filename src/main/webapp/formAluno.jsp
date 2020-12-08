@@ -47,24 +47,24 @@ turma=(turma!=null)?turma : "";
     <div class="container centro ">
         <form action="ControleAluno" method="POST">		
             <label for="idAluno">Id:</label>
-            <input type="text" id="idAluno" name="idAluno" readonly="readonly" value="<%=id%>" readonly />
+            <input type="number" id="idAluno" name="idAluno" value="<%=id%>" readonly />
             <br />
             
             <label for="txtAluno">Nome:</label>
-            <input type="text" id="txtAluno" name="txtAluno" value="<%=nome%>" />
+            <input type="text" id="txtAluno" name="txtAluno" maxlength="60" value="<%=nome%>" />
             <br />
             
             <label for="txtRA">RA:</label>
-            <input type="text" id="txtRA" name="txtRA" value="<%=ra%>" />
+            <input type="text" id="txtRA" name="txtRA" maxlength="13" value="<%=ra%>" />
             <br />	
             
             <label for="idTurma">Turma:</label>
-            <input type="text" id="idTurma" name="idTurma" value="<%=turma%>" />
+            <input type="number" id="idTurma" name="idTurma" min="1" max="99999" value="<%=turma%>" />
             <br/>
             
-            <h3>Favor inserir id de uma turma cadastrada.</h3>
+            <h5>Favor inserir id de uma turma cadastrada.</h5>
             
-            <input type="submit" value="Salvar"/>
+            <input type="submit" class="btn btn-outline-dark" value="Salvar"/>
         
         </form>
     </div>

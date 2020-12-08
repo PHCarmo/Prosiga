@@ -51,32 +51,32 @@ professor=(professor!=null)?professor : "";
     <div class="container centro ">
 	<form action="ControleDscp" method="POST">		
 		<label for="idDscp">Id:</label>
-		<input type="text" id="idDscp" name="idDscp" readonly="readonly" value="<%=id%>" readonly />
+		<input type="number" id="idDscp" name="idDscp" value="<%=id%>" readonly />
 		<br />
 		
 		<label for="txtDscp">Nome:</label>
-		<input type="text" id="txtDscp" name="txtDscp" value="<%=nome%>" />
+		<input type="text" id="txtDscp" name="txtDscp" maxlength="30" value="<%=nome%>" />
 		<br />
 		
 		<label for="txtCH">Carga horaria:</label>
-		<input type="text" id="txtCH" name="txtCH" value="<%=ch%>" />
+		<input type="number" id="txtCH" name="txtCH" min="0" max="9999" value="<%=ch%>" />
 		<br />	
 		
 		<label for="txtEmenta">Ementa:</label>
-		<input type="text" id="txtEmenta" name="txtEmenta" value="<%=ementa%>" />
+		<input type="text" id="txtEmenta" name="txtEmenta" maxlength="100" value="<%=ementa%>" />
 		<br/>
 		
 		<label for="idCurso">Curso:</label>
-		<input type="text" id="idCurso" name="idCurso" value="<%=curso%>" />
+		<input type="number" id="idCurso" name="idCurso" min="1" max="99999" value="<%=curso%>" />
 		<br/>
 		
 		<label for="idProfessor">Professor:</label>
-		<input type="text" id="idProfessor" name="idProfessor" value="<%=professor%>" />
+		<input type="number" id="idProfessor" name="idProfessor" min="1" max="99999" value="<%=professor%>" />
 		<br/>
 		
-		<h3>Favor inserir id de um curso e de um professor cadastrados.</h3>
+		<h5>Favor inserir id de um curso e de um professor cadastrados.</h5>
 		
-		<input type="submit" value="Salvar"/>
+		<input type="submit" class="btn btn-outline-dark" value="Salvar"/>
 	
 	</form>
     </div>

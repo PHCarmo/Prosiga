@@ -47,22 +47,22 @@ descricao=(descricao!=null)?descricao : "";
     <div class="container centro ">
 	<form action="ControleCurso" method="POST">		
 		<label for="idCurso">Id:</label>
-		<input type="text" id="idCurso" name="idCurso" readonly="readonly" value="<%=id%>" readonly />
+		<input type="number" id="idCurso" name="idCurso" value="<%=id%>" readonly />
 		<br />
 		
 		<label for="txtCurso">Nome:</label>
-		<input type="text" id="txtCurso" name="txtCurso" value="<%=nome%>" />
+		<input type="text" id="txtCurso" name="txtCurso" maxlength="30" value="<%=nome%>" />
 		<br />
 		
 		<label for="txtTurno">Turno:</label>
-		<input type="text" id="txtTurno" name="txtTurno" value="<%=turno%>" />
+		<input type="text" id="txtTurno" name="txtTurno" maxlength="10" value="<%=turno%>" />
 		<br />	
 		
 		<label for="txtDescricao">Descricao:</label>
-		<input type="text" id="txtDescricao" name="txtDescricao" value="<%=descricao%>" />
+		<input type="text" id="txtDescricao" name="txtDescricao" maxlength="60" value="<%=descricao%>" />
 		<br />	
 		
-		<input type="submit" value="Salvar"/>
+		<input type="submit" class="btn btn-outline-dark" value="Salvar"/>
 	
 	</form>
     </div>
