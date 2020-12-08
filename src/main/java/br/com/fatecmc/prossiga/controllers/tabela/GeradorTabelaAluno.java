@@ -9,7 +9,7 @@ public class GeradorTabelaAluno implements IGeradorJson {
 	@Override
 	public String gerar(List<EntidadeDominio> entidades) {
 		
-		String json = "";
+		String json = "{\"data\":[]}";
 		String data = "";
 		if(!(entidades.isEmpty())) {
                     int totalLista = entidades.size();
